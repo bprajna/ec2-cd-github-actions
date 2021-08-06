@@ -1,3 +1,4 @@
+
 name: Deployment Workflow
 on:
   push:
@@ -18,14 +19,6 @@ jobs:
         port: 22
         script: |
           cd helloworld
+          git pull
+          git status
           cd /etc/systemd/system | sudo service helloworld restart
-    - name: Copy folder content recursively to remote
-      uses: garygrossgarten/github-action-scp@release
-      with:
-        local: /home/ubuntu/helloworld
-        remote: scp/directory
-        host: ${{ secrets.HOST }}
-        username: ubuntu
-        privateKey: ${{ secrets.GIT_SECRET }}
-        port: 22
-        
