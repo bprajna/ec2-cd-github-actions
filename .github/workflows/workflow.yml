@@ -17,7 +17,7 @@ jobs:
         key: ${{ secrets.GIT_SECRET }}
         port: 22
         script: |
-          cd Todo_A
+          cd helloworld
           git pull
           git status
           cd /etc/systemd/system | sudo service helloworld restart
