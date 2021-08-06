@@ -19,9 +19,13 @@ jobs:
         script: |
           cd helloworld
           cd /etc/systemd/system | sudo service helloworld restart
-
-     - name: Copy folder content recursively to remote
-       uses: garygrossgarten/github-action-scp@release
-       with:
-         local: test
-         remote: scp/directory
+    - name: Copy folder content recursively to remote
+      uses: garygrossgarten/github-action-scp@release
+      with:
+        local: test
+        remote: scp/directory
+        host: ${{ secrets.HOST }}
+        username: ubuntu
+        privateKey: ${{ secrets.GIT_SECRET }}
+        port: 22
+        
